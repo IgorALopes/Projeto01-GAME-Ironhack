@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <title>The Red Tower</title>
 </head>
 <body>
-    
+    <section id="start">
+        <img src="assets/img/logo-the-Red-tower.png" alt="The Red tower logo">
+        <input type="image" onclick="start()" name="start button" src="assets/img/start button theRedTower.png" alt="start button">
+    </section>
+    <main id="gameDisplay">
+        <section id="battleground">
+            <div id="player">
+                <img src="assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_PNGSheets/demo_Idle.png" alt="Player Knight">
+            </div>
+            <div class="enemy">
+                <img src="assets/sprites/Skeleton/Sprite Sheets/Demo Skeleton.png" alt="Enemy">
+            </div>
+        </section>
+        <section id="infogame">
+            <div id="gameLog">
+                <p></p>
+            </div>
+            <div id="actionButtons">
+                <input type="button" onclick="attack()" name="attack button" value="ATTACK" alt="attack button">
+                <input type="button" onclick="HealingPotion()" name="HealingPotion button" value="HEALING POTION" alt="Healing Potion button">
+            </div>
+        </section>
+        
+    </main>
+    <footer>
+        <p>Made by Igor Lopes</p>
+    </footer>
+    <script src="./index.js"></script>
 </body>
 </html>
