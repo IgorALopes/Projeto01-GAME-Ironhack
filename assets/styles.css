@@ -61,28 +61,31 @@ body {
 }
 
 #battleground {
-    height: 384px;
-    width: 1024px;
-    display: flex;
+    height: 344px;
+    width: 1024px;  
+    padding: 20px;  
+}
+
+#battleground h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: rgb(238, 84, 84);
+    text-align: center;
 }
 
 #player img {
     width: 300px;
-    margin-top: 160px;
-    margin-left: 250px;
+    /* margin-top: 160px;
+    margin-left: 250px; */
 }
 
-.enemy img {
-    width: 100px;
-    margin-top: 250px;
-    margin-left: 40px;
+.enemy1 img {
+    width: 83px;
+    /* margin-top: 250px;
+    margin-left: 40px; */
 }
 
 #infogame {
     background-color: #292929;
-    height: 49px;
-    width: 1024px;
-    border-top: 2px solid rgb(238, 84, 84);
     border-radius: 0px 0px 20px 20px;
 }
 
@@ -91,9 +94,19 @@ body {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     color: white;
+    border-top: 2px solid rgb(238, 84, 84);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#actionMenu {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #actionButtons {
@@ -104,7 +117,29 @@ body {
     flex-direction: column;
 }
 
+#attackBtn {
+    width: 60px;
+    height: 60px;
+    background-image: url(img/attackBtn.png);
+    background-color: #292929;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+}
+
+#hpBtn {
+    width: 60px;
+    height: 60px;
+    background-image: url(img/hpBtn.png);
+    background-color: #292929;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;  
+}
+
 footer {
-    color: rgb(255, 85, 85);
+    color: rgb(238, 84, 84);
     margin-top: 25px;
 }
