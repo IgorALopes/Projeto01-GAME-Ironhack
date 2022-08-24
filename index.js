@@ -8,6 +8,9 @@ let attackBtn = document.getElementById("attackBtn")
 let hpBtn = document.getElementById("hpBtn");
 let playerSprite = document.getElementById("playerImg")
 let enemySprite = document.getElementById("enemy1Img")
+let exit = document.getElementById("exit")
+let end = document.getElementById("end")
+let HTMLbody = document.getElementById("HTMLbody")
 // END HTML ELEMENTS //////////
 //
 // CHARACTER CLASSES //////////
@@ -39,15 +42,14 @@ class Player extends Characters {
     }
     receiveDamage(dmg) {
         this.health -= dmg
-        console.log(this.health)
         if (this.health > 0) {
-            return goToGameLog(`You has received ${dmg} points of damage.`)
+            return goToGameLog(`You received ${dmg} points of damage.`)
         } else if (this.health <= 0) {
             return goToGameLog(`You died! Game Over!`)
         }
     }
     healingPotion() {
-        const heal = 15
+        const heal = 35
         this.health += heal
         if (this.health >= this.fullHealth) {
             this.health = this.fullHealth
@@ -59,7 +61,7 @@ class Player extends Characters {
         }
     }
 }
-let player = new Player("Joseph Climber", 10, 10)
+let player = new Player("Joseph Climber", 100, 20)
 //_// END Player Config
 //
 //_// ENEMIES
@@ -73,7 +75,7 @@ class Skeleton extends Characters {
     receiveDamage(dmg) {
         this.health -= dmg
         if (this.health > 0) {
-            return goToGameLog(`${this.name} has received ${dmg} points of damage.`)
+            return goToGameLog(`${this.name} received ${dmg} points of damage.`)
         } else if (this.health <= 0) {
             goToGameLog(`${this.name} is dead!`)
             // RESSURRECTION SKILL
@@ -85,7 +87,7 @@ class Skeleton extends Characters {
         }
     }   
 }
-let skeleton = new Skeleton("Skeleton", 100, 18)
+let skeleton = new Skeleton("Skeleton", 100, 25)
 //_//_// END Skeleton - Enemy 1
 //
 //_// END ENEMIES
@@ -141,6 +143,7 @@ window.addEventListener('load', () => {
             setTimeout(() => {
                 enemySprite.src = "./assets/sprites/Skeleton/GIFS/Skeleton Dead left no loop.gif"
                 playerSprite.src = "./assets/sprites/FreeKnight_v1/__Idle.gif"
+                exit.style.display = "block"
             }, 650)
             // Skeleton Revive
             setTimeout(() => {
@@ -148,6 +151,7 @@ window.addEventListener('load', () => {
             }, 3000)
             setTimeout(() => {
                 enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
+                exit.style.display = "none"
             }, 4500)
         } else {
             setTimeout(() => {
@@ -200,7 +204,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             enemy1Attack();
             setTimeout(() => {
-            enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif"
+                enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif"
             }, 1000)
             setTimeout(() => {playerSprite.src = 
                 "./assets/sprites/FreeKnight_v1/__Hit.gif"
@@ -228,6 +232,17 @@ window.addEventListener('load', () => {
             hpBtn.removeAttribute("disabled")
         }, 5000)
     });
+
+    exit1.addEventListener('click', () => {
+        document.getElementById("gameDisplay").style.display = "none";
+        end.style.display = "flex";
+        HTMLbody.style.height = "1200px";
+    })
+    exit2.addEventListener('click', () => {
+        document.getElementById("gameDisplay").style.display = "none";
+        end.style.display = "flex";
+        HTMLbody.style.height = "1200px";
+    })
 });
 // END CLICK EVENTS, TURNS AND CHAR ANIMATION //////////
 //
