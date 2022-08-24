@@ -41,12 +41,12 @@ class Player extends Characters {
         this.health -= dmg
         console.log(this.health)
         if (this.health > 0) {
-            return goToGameLog(`${this.name} has received ${dmg} points of damage.`)
+            return goToGameLog(`You has received ${dmg} points of damage.`)
         } else if (this.health <= 0) {
             return goToGameLog(`You died! Game Over!`)
         }
     }
-    healingPotion() { //ERROR. Não esta retornando `Your health is full.`
+    healingPotion() {
         const heal = 15
         this.health += heal
         if (this.health >= this.fullHealth) {
@@ -59,7 +59,7 @@ class Player extends Characters {
         }
     }
 }
-let player = new Player("Joseph Climber", 18, 10)
+let player = new Player("Joseph Climber", 10, 10)
 //_// END Player Config
 //
 //_// ENEMIES
@@ -68,6 +68,7 @@ let player = new Player("Joseph Climber", 18, 10)
 class Skeleton extends Characters {
     constructor(name, health, strength) {
         super(name, health, strength)
+        this.fullHealth = health
     }
     receiveDamage(dmg) {
         this.health -= dmg
@@ -78,13 +79,13 @@ class Skeleton extends Characters {
             // RESSURRECTION SKILL
             setTimeout(() => {
                 goToGameLog(`Skeleton is alive again! Do something while he's knocked out!`) 
-                this.health = 50
+                this.health = this.fullHealth
                 enemyHealthStatus.innerText = skeleton.health
             }, 6000)
         }
     }   
 }
-let skeleton = new Skeleton("Skeleton", 50, 18)
+let skeleton = new Skeleton("Skeleton", 100, 18)
 //_//_// END Skeleton - Enemy 1
 //
 //_// END ENEMIES
@@ -104,7 +105,7 @@ function tryAgainWindow() {
 }
 function goToGameLog(log) {
     gameLogTxt.style.display = "block"
-    setTimeout(() => gameLogTxt.innerText = log, 1000)
+    setTimeout(() => gameLogTxt.innerText = log, 500)
     //return setTimeout(() => gameLogTxt.style.display = "none", 3000)
 }
 function enemy1Attack() {
@@ -119,7 +120,7 @@ function playerAttack() {
 }
 
 //
-// CLICK EVENTS, TURNS AND CHAR ANIMATION  //////////
+// CLICK EVENTS, TURNS AND CHAR ANIMATION //////////
 window.addEventListener('load', () => {
     startBtn.addEventListener('click', start)
     
@@ -133,13 +134,13 @@ window.addEventListener('load', () => {
         hpBtn.style.backgroundImage = "url('assets/img/hpBtn disabled.png')";
         // Player attack
         playerAttack();
-        playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__AttackCombo2hitNoLoop.gif"
+        playerSprite.src = "./assets/sprites/FreeKnight_v1/__AttackCombo2hitNoLoop.gif"
         enemySprite.src = "./assets/sprites/Skeleton/GIFS/Skeleton Hit left no loop.gif"
         // Enemy Death
         if (skeleton.health <= 0) {
             setTimeout(() => {
                 enemySprite.src = "./assets/sprites/Skeleton/GIFS/Skeleton Dead left no loop.gif"
-                playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+                playerSprite.src = "./assets/sprites/FreeKnight_v1/__Idle.gif"
             }, 650)
             // Skeleton Revive
             setTimeout(() => {
@@ -150,7 +151,7 @@ window.addEventListener('load', () => {
             }, 4500)
         } else {
             setTimeout(() => {
-            playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+            playerSprite.src = "./assets/sprites/FreeKnight_v1/__Idle.gif"
             enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
             }, 650)
             //Enemy Attack
@@ -160,18 +161,18 @@ window.addEventListener('load', () => {
                 enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif"
                 }, 1000)
                 setTimeout(() => {playerSprite.src = 
-                    "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Hit.gif"
+                    "./assets/sprites/FreeKnight_v1/__Hit.gif"
                 }, 1500)
                 // Player Death
                 if (player.health <= 0) {
                 setTimeout(() => {
-                    playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Death no loop.gif"
+                    playerSprite.src = "./assets/sprites/FreeKnight_v1/__Death no loop.gif"
                 }, 2000)
                 setTimeout(() => enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif", 2500)
                 setTimeout(() => tryAgainWindow(), 2500)
                 } else {
                     setTimeout(() => {
-                        playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+                        playerSprite.src = "./assets/sprites/FreeKnight_v1/__Idle.gif"
                     }, 2000)
                     setTimeout(() => {
                         enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
@@ -194,7 +195,7 @@ window.addEventListener('load', () => {
         attackBtn.style.backgroundImage = "url('assets/img/attackBtn disabled.png')";
         hpBtn.style.backgroundImage = "url('assets/img/hpBtn disabled.png')";
         player.healingPotion();
-        playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif" // CHANGE FOR HEALING SPRITE
+        playerSprite.src = "./assets/sprites/FreeKnight_v1/__HealFx.gif"
         //Enemy Attack
         setTimeout(() => {
             enemy1Attack();
@@ -202,17 +203,18 @@ window.addEventListener('load', () => {
             enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif"
             }, 1000)
             setTimeout(() => {playerSprite.src = 
-                "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Hit.gif"
+                "./assets/sprites/FreeKnight_v1/__Hit.gif"
             }, 1500)
             // Player Death
             if (player.health <= 0) {
             setTimeout(() => {
-                playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Death no loop.gif"
+                playerSprite.src = "./assets/sprites/FreeKnight_v1/__Death no loop.gif"
             }, 2000)
             setTimeout(() => enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif", 2500)
+            setTimeout(() => tryAgainWindow(), 2500)
             } else {
                 setTimeout(() => {
-                    playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+                    playerSprite.src = "./assets/sprites/FreeKnight_v1/__Idle.gif"
                 }, 2000)
                 setTimeout(() => {
                     enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
@@ -224,7 +226,7 @@ window.addEventListener('load', () => {
             hpBtn.style.backgroundImage = "url('assets/img/hpBtn.png')";
             attackBtn.removeAttribute("disabled")
             hpBtn.removeAttribute("disabled")
-        }, 8000)
+        }, 5000)
     });
 });
 // END CLICK EVENTS, TURNS AND CHAR ANIMATION //////////
