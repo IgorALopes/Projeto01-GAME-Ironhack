@@ -5,6 +5,8 @@ let enemyHealthStatus = document.getElementById("enemyStatus")
 let gameLogTxt = document.querySelector("#gameLog p")
 let attackBtn = document.getElementById("attackBtn")
 let hpBtn = document.getElementById("hpBtn");
+let playerSprite = document.getElementById("playerImg")
+let enemySprite = document.getElementById("enemy1Img")
 // END HTML ELEMENTS //////////
 //
 // CHARACTER CLASSES //////////
@@ -45,9 +47,7 @@ class Player extends Characters {
     }
     healingPotion() { //ERROR. Não esta retornando `Your health is full.`
         const heal = 15
-        console.log(this.fullHealth)
         this.health += heal
-        console.log(this.health)
         if (this.health >= this.fullHealth) {
             this.health = this.fullHealth
             playerHealthStatus.innerText = player.health
@@ -58,7 +58,7 @@ class Player extends Characters {
         }
     }
 }
-let player = new Player("Joseph Climber", 100, 10)
+let player = new Player("Joseph Climber", 20, 10)
 //_// END Player Config
 //
 //_// ENEMIES
@@ -101,9 +101,12 @@ function start() {
 function goToGameLog(log) {
     gameLogTxt.style.display = "block"
     gameLogTxt.innerText = log
-    return setTimeout(() => gameLogTxt.style.display = "none", 5000)
+    //return setTimeout(() => gameLogTxt.style.display = "none", 3000)
 }
-function enemyAttack() {
+function changeSprite(src) {
+    return //
+}
+function enemy1Attack() {
     let dmg = player.receiveDamage(skeleton.attack())
     playerHealthStatus.innerText = player.health
     return dmg
@@ -115,22 +118,110 @@ function playerAttack() {
 }
 
 //
-// CLICK EVENTS //////////
+// CLICK EVENTS, TURNS AND CHAR ANIMATION  //////////
 window.addEventListener('load', () => {
     startBtn.addEventListener('click', start)
 
     attackBtn.addEventListener('click', () => {
+        // Disable buttons
         attackBtn.setAttribute("disabled", true)
-        attackBtn.innerHTML// IMG
+        hpBtn.setAttribute("disabled", true)
+        attackBtn.style.backgroundImage = "url('assets/img/attackBtn disabled.png')";
+        hpBtn.style.backgroundImage = "url('assets/img/hpBtn disabled.png')";
+        // Player attack
         playerAttack();
-        setTimeout(enemyAttack, 2000)
+        playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__AttackCombo2hitNoLoop.gif"
+        enemySprite.src = "./assets/sprites/Skeleton/GIFS/Skeleton Hit left no loop.gif"
+        // Enemy Death
+        if (skeleton.health <= 0) {
+            setTimeout(() => {
+                enemySprite.src = "./assets/sprites/Skeleton/GIFS/Skeleton Dead left no loop.gif"
+                playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+            }, 650)
+            // Skeleton Revive
+            setTimeout(() => {
+                enemySprite.src = "./assets/sprites/Skeleton/GIFS/Skeleton Dead revive left no loop.gif"
+            }, 3000)
+            setTimeout(() => {
+                enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
+            }, 4500)
+        } else {
+            setTimeout(() => {
+            playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+            enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
+            }, 650)
+            //Enemy Attack
+            setTimeout(() => {
+                enemy1Attack();
+                setTimeout(() => {
+                enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif"
+                }, 1000)
+                setTimeout(() => {playerSprite.src = 
+                    "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Hit.gif"
+                }, 1500)
+                // Player Death
+                if (player.health <= 0) {
+                setTimeout(() => {
+                    playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Death no loop.gif"
+                }, 2000)
+                setTimeout(() => enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif", 2500)
+                } else {
+                    setTimeout(() => {
+                        playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+                    }, 2000)
+                    setTimeout(() => {
+                        enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
+                    }, 2500) 
+                }
+            }, 1500)
+        }
+        // Enable buttons
         setTimeout(() => {
+            attackBtn.style.backgroundImage = "url('assets/img/attackBtn.png')";
+            hpBtn.style.backgroundImage = "url('assets/img/hpBtn.png')"; 
             attackBtn.removeAttribute("disabled")
-            attackBtn.innerHTML //IMG
-        }, 4000)
+            hpBtn.removeAttribute("disabled")
+        }, 6000)
     });
   
-    hpBtn.addEventListener('click', player.healingPotion);
+    hpBtn.addEventListener('click', () => {
+        attackBtn.setAttribute("disabled", true)
+        hpBtn.setAttribute("disabled", true)
+        attackBtn.style.backgroundImage = "url('assets/img/attackBtn disabled.png')";
+        hpBtn.style.backgroundImage = "url('assets/img/hpBtn disabled.png')";
+        player.healingPotion();
+        playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif" // CHANGE FOR HEALING SPRITE
+        //Enemy Attack
+        setTimeout(() => {
+            enemy1Attack();
+            setTimeout(() => {
+            enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif"
+            }, 1000)
+            setTimeout(() => {playerSprite.src = 
+                "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Hit.gif"
+            }, 1500)
+            // Player Death
+            if (player.health <= 0) {
+            setTimeout(() => {
+                playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Death no loop.gif"
+            }, 2000)
+            setTimeout(() => enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif", 2500)
+            } else {
+                setTimeout(() => {
+                    playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"
+                }, 2000)
+                setTimeout(() => {
+                    enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"
+                }, 2500) 
+            }
+        }, 1500)
+        setTimeout(() => {
+            attackBtn.style.backgroundImage = "url('assets/img/attackBtn.png')";
+            hpBtn.style.backgroundImage = "url('assets/img/hpBtn.png')";
+            attackBtn.removeAttribute("disabled")
+            hpBtn.removeAttribute("disabled")
+        }, 8000)
+    });
 });
-// END CLICK EVENTS //////////
+// END CLICK EVENTS, TURNS AND CHAR ANIMATION //////////
 //
