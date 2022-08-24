@@ -1,5 +1,6 @@
 // HTML ELEMENTS //////////
 let startBtn = document.getElementById("startBtn")
+let tryAgainBtn = document.getElementById("tryAgainBtn")
 let playerHealthStatus = document.getElementById("playerStatus")
 let enemyHealthStatus = document.getElementById("enemyStatus")
 let gameLogTxt = document.querySelector("#gameLog p")
@@ -58,7 +59,7 @@ class Player extends Characters {
         }
     }
 }
-let player = new Player("Joseph Climber", 20, 10)
+let player = new Player("Joseph Climber", 18, 10)
 //_// END Player Config
 //
 //_// ENEMIES
@@ -98,13 +99,13 @@ function start() {
     document.getElementById("start").style.display = "none";
     document.getElementById("gameDisplay").style.display = "block";
 }
+function tryAgainWindow() {
+    document.getElementById("gameOver").style.display = "flex"
+}
 function goToGameLog(log) {
     gameLogTxt.style.display = "block"
-    gameLogTxt.innerText = log
+    setTimeout(() => gameLogTxt.innerText = log, 1000)
     //return setTimeout(() => gameLogTxt.style.display = "none", 3000)
-}
-function changeSprite(src) {
-    return //
 }
 function enemy1Attack() {
     let dmg = player.receiveDamage(skeleton.attack())
@@ -121,6 +122,8 @@ function playerAttack() {
 // CLICK EVENTS, TURNS AND CHAR ANIMATION  //////////
 window.addEventListener('load', () => {
     startBtn.addEventListener('click', start)
+    
+    tryAgainBtn.addEventListener('click', () => {document.location.reload(true)})
 
     attackBtn.addEventListener('click', () => {
         // Disable buttons
@@ -165,6 +168,7 @@ window.addEventListener('load', () => {
                     playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Death no loop.gif"
                 }, 2000)
                 setTimeout(() => enemySprite.src = "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif", 2500)
+                setTimeout(() => tryAgainWindow(), 2500)
                 } else {
                     setTimeout(() => {
                         playerSprite.src = "./assets/sprites/FreeKnight_v1/Colour1/NoOutline/120x80_gifs/__Idle.gif"

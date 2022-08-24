@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
 * {
     margin: 0px;
 }
@@ -29,9 +54,14 @@ body {
     width: 400px;
     border-radius: 20px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.301);
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
 }
 
 #start img {
@@ -62,7 +92,7 @@ body {
 #battleground {
     height: 344px;
     width: 1024px;  
-    padding: 20px;
+    padding: 20px 0px 20px 0px;
 }
 
 #battleground h2 {
@@ -156,7 +186,9 @@ body {
     align-items: center;
 }
 
+
 #gameOver {
+    position: absolute;
     background-color: #292929;
     background-image: url(img/TheRedTower.jpg);
     background-position: center center;
@@ -165,10 +197,30 @@ body {
     height: 576px;
     width: 400px;
     border-radius: 20px;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.301);
-    display: flex;
+    box-shadow: 0px 0px 5000px rgb(0, 0, 0);
+    display: none;
     flex-direction: column;
     align-items: center;
+    animation: fadeIn 4s;
+    -webkit-animation: fadeIn 4s;
+    -moz-animation: fadeIn 4s;
+    -o-animation: fadeIn 4s;
+    -ms-animation: fadeIn 4s;
+}
+
+#gameOver img {
+    width: 200px;
+    margin-top: 80px;
+}
+
+#tryAgainBtn {
+    position: absolute;
+    width: 180px;
+    margin-top: 322px;
+}
+
+#petalsRain {
+    position: absolute;
 }
 
 footer {
