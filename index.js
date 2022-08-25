@@ -142,7 +142,7 @@ window.addEventListener('load', () => {
         if (skeleton.health <= 0) {
             setTimeout(() => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Dead left no loop.gif")
-                playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Idle.gif")
+                playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Idle.gif")
                 exit.style.display = "block"
             }, 650)
             // Skeleton Revive
@@ -155,7 +155,7 @@ window.addEventListener('load', () => {
             }, 4500)
         } else {
             setTimeout(() => {
-            playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Idle.gif")
+            playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Idle.gif")
             enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
             }, 650)
             //Enemy Attack
@@ -176,7 +176,7 @@ window.addEventListener('load', () => {
                 setTimeout(() => tryAgainWindow(), 2500)
                 } else {
                     setTimeout(() => {
-                        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Idle.gif")
+                        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Idle.gif")
                     }, 2000)
                     setTimeout(() => {
                         enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
@@ -218,7 +218,7 @@ window.addEventListener('load', () => {
             setTimeout(() => tryAgainWindow(), 2500)
             } else {
                 setTimeout(() => {
-                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Idle.gif")
+                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Idle.gif")
                 }, 2000)
                 setTimeout(() => {
                     enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
