@@ -136,7 +136,7 @@ window.addEventListener('load', () => {
         hpBtn.style.backgroundImage = "url('./assets/img/hpBtn disabled.png')";
         // Player attack
         playerAttack();
-        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__AttackCombo2hitNoLoop.gif")
+        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/AttackCombo2hitNoLoop.gif")
         enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Hit left no loop.gif")
         // Enemy Death
         if (skeleton.health <= 0) {
@@ -165,12 +165,12 @@ window.addEventListener('load', () => {
                     enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
                 }, 1000)
                 setTimeout(() => {
-                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Hit.gif")
+                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Hit.gif")
                 }, 1500)
                 // Player Death
                 if (player.health <= 0) {
                 setTimeout(() => {
-                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Death no loop.gif")
+                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
                 }, 2000)
                 setTimeout(() => enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
                 setTimeout(() => tryAgainWindow(), 2500)
@@ -199,7 +199,7 @@ window.addEventListener('load', () => {
         attackBtn.style.backgroundImage = "url('./assets/img/attackBtn disabled.png')";
         hpBtn.style.backgroundImage = "url('./assets/img/hpBtn disabled.png')";
         player.healingPotion();
-        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__HealFx.gif")
+        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/HealFx.gif")
         //Enemy Attack
         setTimeout(() => {
             enemy1Attack();
@@ -207,12 +207,12 @@ window.addEventListener('load', () => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
             }, 1000)
             setTimeout(() => {
-                playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Hit.gif")
+                playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Hit.gif")
             }, 1500)
             // Player Death
             if (player.health <= 0) {
             setTimeout(() => {
-                playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Death no loop.gif")
+                playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
             }, 2000)
             setTimeout(() => enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
             setTimeout(() => tryAgainWindow(), 2500)
