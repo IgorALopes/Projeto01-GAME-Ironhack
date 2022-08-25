@@ -61,10 +61,10 @@ class Player extends Characters {
         this.health += heal
         if (this.health >= this.fullHealth) {
             this.health = this.fullHealth
-            playerHealthStatus.innerText = player.health
+            playerHealthStatus.innerText = `HP / ${player.health}`
             return goToGameLog(`Your health is full.`)
         } else {
-            playerHealthStatus.innerText = player.health
+            playerHealthStatus.innerText = `HP / ${player.health}`
             return goToGameLog(`You healed ${heal} points of health.`)
         }
     }
@@ -103,8 +103,8 @@ let skeleton = new Skeleton("Skeleton", 100, 25)
 // END CHARACTER CLASSES //////////
 //
 //GENERAL FUNCTIONS AND SETUPS //////////
-playerHealthStatus.innerText = `HP - ${player.health}`
-enemyHealthStatus.innerText = `HP - ${skeleton.health}`
+playerHealthStatus.innerText = `HP / ${player.health}`
+enemyHealthStatus.innerText = `HP / ${skeleton.health}`
 
 function start() {
     document.getElementById("start").style.display = "none";
@@ -120,12 +120,12 @@ function goToGameLog(log) {
 }
 function enemy1Attack() {
     let dmg = player.receiveDamage(skeleton.attack())
-    playerHealthStatus.innerText = player.health
+    playerHealthStatus.innerText = `HP / ${player.health}`
     return dmg
 }
 function playerAttack() {
     let dmg = skeleton.receiveDamage(player.attack())
-    enemyHealthStatus.innerText = skeleton.health
+    enemyHealthStatus.innerText = `HP / ${skeleton.health}`
     return dmg
 }
 // END GENERAL FUNCTIONS AND SETUPS //////////

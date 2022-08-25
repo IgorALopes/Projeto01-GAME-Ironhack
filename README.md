@@ -1,5 +1,7 @@
 <img src="./assets/img/logo-the-Red-tower.png" alt="The Red Tower Logo" width="20%"/>
 
+[PLAY 🌹](https://igoralopes.github.io/Projeto01-GAME-Ironhack/)
+
 #PORTUGUÊS
 
 Primeiro projeto referente ao curso de Web Development da Ironhack. Turma de ago/2022 Fulltime Remote.
