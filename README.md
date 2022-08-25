@@ -1,4 +1,4 @@
-<img src="./assets/img/logo-the-Red-tower.png" alt="The Red Tower Logo" width="10%"/>
+<img src="./assets/img/logo-the-Red-tower.png" alt="The Red Tower Logo" width="20%"/>
 
 #PORTUGUÊS
 

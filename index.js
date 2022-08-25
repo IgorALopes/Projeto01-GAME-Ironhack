@@ -136,7 +136,7 @@ window.addEventListener('load', () => {
         hpBtn.style.backgroundImage = "url('assets/img/hpBtn disabled.png')";
         // Player attack
         playerAttack();
-        playerSprite.src = "./assets/sprites/FreeKnight_v1/__AttackCombo2hitNoLoop.gif"
+        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__AttackCombo2hitNoLoop.gif")
         enemySprite.src = "./assets/sprites/Skeleton/GIFS/Skeleton Hit left no loop.gif"
         // Enemy Death
         if (skeleton.health <= 0) {
