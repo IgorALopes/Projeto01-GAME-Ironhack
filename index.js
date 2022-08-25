@@ -132,8 +132,8 @@ window.addEventListener('load', () => {
         // Disable buttons
         attackBtn.setAttribute("disabled", true)
         hpBtn.setAttribute("disabled", true)
-        attackBtn.style.backgroundImage = "url('assets/img/attackBtn disabled.png')";
-        hpBtn.style.backgroundImage = "url('assets/img/hpBtn disabled.png')";
+        attackBtn.style.backgroundImage = "url('./assets/img/attackBtn disabled.png')";
+        hpBtn.style.backgroundImage = "url('./assets/img/hpBtn disabled.png')";
         // Player attack
         playerAttack();
         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__AttackCombo2hitNoLoop.gif")
@@ -150,19 +150,19 @@ window.addEventListener('load', () => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Dead revive left no loop.gif")
             }, 3000)
             setTimeout(() => {
-                enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
+                enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
                 exit.style.display = "none"
             }, 4500)
         } else {
             setTimeout(() => {
             playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Idle.gif")
-            enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
+            enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
             }, 650)
             //Enemy Attack
             setTimeout(() => {
                 enemy1Attack();
                 setTimeout(() => {
-                    enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
+                    enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
                 }, 1000)
                 setTimeout(() => {
                     playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Hit.gif")
@@ -172,22 +172,22 @@ window.addEventListener('load', () => {
                 setTimeout(() => {
                     playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Death no loop.gif")
                 }, 2000)
-                setTimeout(() => enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
+                setTimeout(() => enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
                 setTimeout(() => tryAgainWindow(), 2500)
                 } else {
                     setTimeout(() => {
                         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Idle.gif")
                     }, 2000)
                     setTimeout(() => {
-                        enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
+                        enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
                     }, 2500) 
                 }
             }, 1500)
         }
         // Enable buttons
         setTimeout(() => {
-            attackBtn.style.backgroundImage = "url('assets/img/attackBtn.png')";
-            hpBtn.style.backgroundImage = "url('assets/img/hpBtn.png')"; 
+            attackBtn.style.backgroundImage = "url('./assets/img/attackBtn.png')";
+            hpBtn.style.backgroundImage = "url('./assets/img/hpBtn.png')"; 
             attackBtn.removeAttribute("disabled")
             hpBtn.removeAttribute("disabled")
         }, 6000)
@@ -196,15 +196,15 @@ window.addEventListener('load', () => {
     hpBtn.addEventListener('click', () => {
         attackBtn.setAttribute("disabled", true)
         hpBtn.setAttribute("disabled", true)
-        attackBtn.style.backgroundImage = "url('assets/img/attackBtn disabled.png')";
-        hpBtn.style.backgroundImage = "url('assets/img/hpBtn disabled.png')";
+        attackBtn.style.backgroundImage = "url('./assets/img/attackBtn disabled.png')";
+        hpBtn.style.backgroundImage = "url('./assets/img/hpBtn disabled.png')";
         player.healingPotion();
         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__HealFx.gif")
         //Enemy Attack
         setTimeout(() => {
             enemy1Attack();
             setTimeout(() => {
-                enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
+                enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
             }, 1000)
             setTimeout(() => {
                 playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Hit.gif")
@@ -214,20 +214,20 @@ window.addEventListener('load', () => {
             setTimeout(() => {
                 playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Death no loop.gif")
             }, 2000)
-            setTimeout(() => enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
+            setTimeout(() => enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
             setTimeout(() => tryAgainWindow(), 2500)
             } else {
                 setTimeout(() => {
                     playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/__Idle.gif")
                 }, 2000)
                 setTimeout(() => {
-                    enemySprite.setAttribute("src", "assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
+                    enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
                 }, 2500) 
             }
         }, 1500)
         setTimeout(() => {
-            attackBtn.style.backgroundImage = "url('assets/img/attackBtn.png')";
-            hpBtn.style.backgroundImage = "url('assets/img/hpBtn.png')";
+            attackBtn.style.backgroundImage = "url('./assets/img/attackBtn.png')";
+            hpBtn.style.backgroundImage = "url('./assets/img/hpBtn.png')";
             attackBtn.removeAttribute("disabled")
             hpBtn.removeAttribute("disabled")
         }, 5000)
