@@ -1,9 +1,12 @@
 // HTML ELEMENTS //////////
+let loadBtn = document.getElementById("loadBtn")
 let startBtn = document.getElementById("startBtn")
 let tryAgainBtn = document.getElementById("tryAgainBtn")
 let playerHealthStatus = document.getElementById("playerStatus")
 let enemyHealthStatus = document.getElementById("enemyStatus")
 let gameLogTxt = document.querySelector("#gameLog p")
+let playerTurnStatus = document.getElementById("playerTurnStatus")
+let enemyTurnStatus = document.getElementById("enemyTurnStatus")
 let attackBtn = document.getElementById("attackBtn")
 let hpBtn = document.getElementById("hpBtn");
 let playerSprite = document.getElementById("playerImg")
@@ -13,8 +16,14 @@ let end = document.getElementById("end")
 let HTMLbody = document.getElementById("HTMLbody")
 // END HTML ELEMENTS //////////
 //
-// CHARACTER CLASSES //////////
+// AUDIO
+const musicIntro = new Audio('./assets/audio/Intro - Magical Forest - Sir Cubworth.mp3');
+const musicBattle = new Audio('./assets/audio/Battle - Downtown Metropolis Chase - Aaron Kenny.mp3');
+const musicGameOver = new Audio('./assets/audio/Game Over - Anitmatter - The Westerlies.mp3')
+const musicEnd = new Audio('./assets/audio/End - Medieval Astrology - Underbelly & Ty Mayer.mp3')
+// END AUDIO
 //
+// CHARACTER CLASSES //////////
 class Characters {
     constructor(name, health, strength) {
         this.name = name
@@ -33,7 +42,6 @@ class Characters {
         }
     }   
 }
-//
 //_// Player Config
 class Player extends Characters {
     constructor(name, health, strength) {
@@ -94,9 +102,9 @@ let skeleton = new Skeleton("Skeleton", 100, 25)
 //
 // END CHARACTER CLASSES //////////
 //
-
-playerHealthStatus.innerText = player.health
-enemyHealthStatus.innerText = skeleton.health
+//GENERAL FUNCTIONS AND SETUPS //////////
+playerHealthStatus.innerText = `HP - ${player.health}`
+enemyHealthStatus.innerText = `HP - ${skeleton.health}`
 
 function start() {
     document.getElementById("start").style.display = "none";
@@ -120,11 +128,27 @@ function playerAttack() {
     enemyHealthStatus.innerText = skeleton.health
     return dmg
 }
-
+// END GENERAL FUNCTIONS AND SETUPS //////////
 //
 // CLICK EVENTS, TURNS AND CHAR ANIMATION //////////
 window.addEventListener('load', () => {
-    startBtn.addEventListener('click', start)
+    
+    loadBtn.addEventListener('click', () => {
+        musicIntro.play();
+        musicIntro.volume = 0.2
+        musicIntro.loop = true;
+        loadBtn.style.display = "none"
+        document.getElementById("start").style.display = "flex";
+    })
+
+    startBtn.addEventListener('click', () => {
+        start()
+        musicIntro.pause()
+        musicBattle.play();
+        musicBattle.volume = 0.2
+        musicBattle.loop = true;
+
+    })
     
     tryAgainBtn.addEventListener('click', () => {document.location.reload(true)})
 
@@ -134,6 +158,8 @@ window.addEventListener('load', () => {
         hpBtn.setAttribute("disabled", true)
         attackBtn.style.backgroundImage = "url('./assets/img/attackBtn disabled.png')";
         hpBtn.style.backgroundImage = "url('./assets/img/hpBtn disabled.png')";
+        playerTurnStatus.style.display = "none"
+        enemyTurnStatus.style.display = "block"
         // Player attack
         playerAttack();
         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/AttackCombo2hitNoLoop.gif")
@@ -169,11 +195,17 @@ window.addEventListener('load', () => {
                 }, 1500)
                 // Player Death
                 if (player.health <= 0) {
-                setTimeout(() => {
-                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
-                }, 2000)
-                setTimeout(() => enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
-                setTimeout(() => tryAgainWindow(), 2500)
+                    setTimeout(() => {
+                        playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
+                        }, 2000)
+                    setTimeout(() => {
+                        enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
+                        musicBattle.pause()
+                        musicGameOver.play();
+                        musicGameOver.volume = 0.2
+                        musicGameOver.loop = true;
+                        tryAgainWindow()
+                    }, 2500)
                 } else {
                     setTimeout(() => {
                         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Idle.gif")
@@ -190,6 +222,8 @@ window.addEventListener('load', () => {
             hpBtn.style.backgroundImage = "url('./assets/img/hpBtn.png')"; 
             attackBtn.removeAttribute("disabled")
             hpBtn.removeAttribute("disabled")
+            playerTurnStatus.style.display = "block"
+            enemyTurnStatus.style.display = "none"
         }, 6000)
     });
   
@@ -198,6 +232,8 @@ window.addEventListener('load', () => {
         hpBtn.setAttribute("disabled", true)
         attackBtn.style.backgroundImage = "url('./assets/img/attackBtn disabled.png')";
         hpBtn.style.backgroundImage = "url('./assets/img/hpBtn disabled.png')";
+        playerTurnStatus.style.display = "none"
+        enemyTurnStatus.style.display = "block"
         player.healingPotion();
         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/HealFx.gif")
         //Enemy Attack
@@ -211,11 +247,17 @@ window.addEventListener('load', () => {
             }, 1500)
             // Player Death
             if (player.health <= 0) {
-            setTimeout(() => {
-                playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
-            }, 2000)
-            setTimeout(() => enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif"), 2500)
-            setTimeout(() => tryAgainWindow(), 2500)
+                setTimeout(() => {
+                    playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
+                    }, 2000)
+                setTimeout(() => {
+                    enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
+                    musicBattle.pause()
+                    musicGameOver.play();
+                    musicGameOver.volume = 0.2
+                    musicGameOver.loop = true;
+                    tryAgainWindow()
+                }, 2500)
             } else {
                 setTimeout(() => {
                     playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Idle.gif")
@@ -230,18 +272,28 @@ window.addEventListener('load', () => {
             hpBtn.style.backgroundImage = "url('./assets/img/hpBtn.png')";
             attackBtn.removeAttribute("disabled")
             hpBtn.removeAttribute("disabled")
+            playerTurnStatus.style.display = "block"
+            enemyTurnStatus.style.display = "none"
         }, 5000)
     });
 
     exit1.addEventListener('click', () => {
         document.getElementById("gameDisplay").style.display = "none";
-        end.style.display = "flex";
         HTMLbody.style.height = "1200px";
+        end.style.display = "flex";
+        musicBattle.pause()
+        musicEnd.play();
+        musicEnd.volume = 0.2
+        musicEnd.loop = true;
     })
     exit2.addEventListener('click', () => {
         document.getElementById("gameDisplay").style.display = "none";
-        end.style.display = "flex";
         HTMLbody.style.height = "1200px";
+        end.style.display = "flex";
+        musicBattle.pause()
+        musicEnd.play();
+        musicEnd.volume = 0.2
+        musicEnd.loop = true;
     })
 });
 // END CLICK EVENTS, TURNS AND CHAR ANIMATION //////////
