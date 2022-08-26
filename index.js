@@ -197,12 +197,12 @@ window.addEventListener('load', () => {
             enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
             }, 650)
             //Enemy Attack
+            enemy1Attack();
             setTimeout(() => {
                 setTimeout(() => {
                     enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
                 }, 1000)
                 setTimeout(() => {
-                    enemy1Attack();
                     sfxAxeAttack.play()
                     sfxAxeAttack.volume = 0.3
                     playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Hit.gif")
@@ -257,12 +257,12 @@ window.addEventListener('load', () => {
         sfxHealingPot.play()
         sfxHealingPot.volume = 0.15
         //Enemy Attack
+        enemy1Attack();
         setTimeout(() => {
             setTimeout(() => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
             }, 1000)
             setTimeout(() => {
-                enemy1Attack();
                 sfxAxeAttack.play()
                 sfxAxeAttack.volume = 0.3
                 playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Hit.gif")
