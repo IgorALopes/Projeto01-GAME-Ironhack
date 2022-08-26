@@ -21,6 +21,12 @@ const musicIntro = new Audio('./assets/audio/Intro - Magical Forest - Sir Cubwor
 const musicBattle = new Audio('./assets/audio/Battle - Downtown Metropolis Chase - Aaron Kenny.mp3');
 const musicGameOver = new Audio('./assets/audio/Game Over - Anitmatter - The Westerlies.mp3')
 const musicEnd = new Audio('./assets/audio/End - Medieval Astrology - Underbelly & Ty Mayer.mp3')
+const sfxAxeAttack = new Audio('./assets/audio/sfxAxeAttack.wav')
+const sfxPlayerSwordAttack = new Audio('./assets/audio/sfxPlayerSwordAttack.wav')
+const sfxDeathSkeleton = new Audio('./assets/audio/sfxDeathSkeleton.mp3')
+const sfxReviveSkeleton = new Audio('./assets/audio/sfxReviveSkeleton .mp3')
+const sfxHealingPot = new Audio('./assets/audio/sfxHealingPot.wav')
+const sfxPlayerDeath = new Audio('./assets/audio/sfxPlayerDeath.wav')
 // END AUDIO
 //
 // CHARACTER CLASSES //////////
@@ -145,7 +151,7 @@ window.addEventListener('load', () => {
         start()
         musicIntro.pause()
         musicBattle.play();
-        musicBattle.volume = 0.2
+        musicBattle.volume = 0.05
         musicBattle.loop = true;
 
     })
@@ -164,16 +170,22 @@ window.addEventListener('load', () => {
         playerAttack();
         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/AttackCombo2hitNoLoop.gif")
         enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Hit left no loop.gif")
+        sfxPlayerSwordAttack.play()
+        sfxPlayerSwordAttack.volume = 0.3
         // Enemy Death
         if (skeleton.health <= 0) {
             setTimeout(() => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Dead left no loop.gif")
                 playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Idle.gif")
+                sfxDeathSkeleton.play()
+                sfxDeathSkeleton.volume = 0.1
                 exit.style.display = "block"
             }, 650)
             // Skeleton Revive
             setTimeout(() => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Dead revive left no loop.gif")
+                sfxReviveSkeleton.play()
+                sfxReviveSkeleton.volume = 0.1
             }, 3000)
             setTimeout(() => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
@@ -186,18 +198,24 @@ window.addEventListener('load', () => {
             }, 650)
             //Enemy Attack
             setTimeout(() => {
-                enemy1Attack();
                 setTimeout(() => {
                     enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
                 }, 1000)
                 setTimeout(() => {
+                    enemy1Attack();
+                    sfxAxeAttack.play()
+                    sfxAxeAttack.volume = 0.3
                     playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Hit.gif")
                 }, 1500)
                 // Player Death
                 if (player.health <= 0) {
                     setTimeout(() => {
+                        sfxPlayerDeath.play()
+                        sfxPlayerDeath.volume = 0.05
+                    }, 1500)
+                    setTimeout(() => {
                         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
-                        }, 2000)
+                    }, 2000)
                     setTimeout(() => {
                         enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
                         musicBattle.pause()
@@ -236,25 +254,33 @@ window.addEventListener('load', () => {
         enemyTurnStatus.style.display = "block"
         player.healingPotion();
         playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/HealFx.gif")
+        sfxHealingPot.play()
+        sfxHealingPot.volume = 0.15
         //Enemy Attack
         setTimeout(() => {
-            enemy1Attack();
             setTimeout(() => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
             }, 1000)
             setTimeout(() => {
+                enemy1Attack();
+                sfxAxeAttack.play()
+                sfxAxeAttack.volume = 0.3
                 playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Hit.gif")
             }, 1500)
             // Player Death
             if (player.health <= 0) {
                 setTimeout(() => {
+                    sfxPlayerDeath.play()
+                    sfxPlayerDeath.volume = 0.05
+                }, 1500)
+                setTimeout(() => {
                     playerSprite.setAttribute("src", "./assets/sprites/FreeKnight_v1/Death no loop.gif")
-                    }, 2000)
+                }, 2000)
                 setTimeout(() => {
                     enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
                     musicBattle.pause()
                     musicGameOver.play();
-                    musicGameOver.volume = 0.2
+                    musicGameOver.volume = 0.1
                     musicGameOver.loop = true;
                     tryAgainWindow()
                 }, 2500)
