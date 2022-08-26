@@ -197,8 +197,8 @@ window.addEventListener('load', () => {
             enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Idle left.gif")
             }, 650)
             //Enemy Attack
-            enemy1Attack();
             setTimeout(() => {
+                enemy1Attack();
                 setTimeout(() => {
                     enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
                 }, 1000)
@@ -257,8 +257,8 @@ window.addEventListener('load', () => {
         sfxHealingPot.play()
         sfxHealingPot.volume = 0.15
         //Enemy Attack
-        enemy1Attack();
         setTimeout(() => {
+            enemy1Attack();
             setTimeout(() => {
                 enemySprite.setAttribute("src", "./assets/sprites/Skeleton/GIFS/Skeleton Attack left no loop.gif")
             }, 1000)
