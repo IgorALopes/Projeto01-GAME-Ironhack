@@ -2,9 +2,11 @@
 
 [PLAY 🌹](https://igoralopes.github.io/Projeto01-GAME-Ironhack/)
 
+[Slides Apresentation](https://docs.google.com/presentation/d/1oENtEqeZMUiKpOOIpdCtNAK-1kv4ILmziORKGszgEv4/edit?usp=sharing)
+
 #PORTUGUÊS
 
-Primeiro projeto referente ao curso de Web Development da Ironhack. Turma de ago/2022 Fulltime Remote.
+Primeiro projeto referente ao curso de Web Development da Ironhack. Turma de ago/2022 Fulltime Remote São Paulo
 
 O trabalho consiste na criação de um jogo utilizando as linguagens HTML, CSS e JavaScript.
 

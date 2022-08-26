@@ -135,7 +135,7 @@ window.addEventListener('load', () => {
     
     loadBtn.addEventListener('click', () => {
         musicIntro.play();
-        musicIntro.volume = 0.2
+        musicIntro.volume = 0.3
         musicIntro.loop = true;
         loadBtn.style.display = "none"
         document.getElementById("start").style.display = "flex";
