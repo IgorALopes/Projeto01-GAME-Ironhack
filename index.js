@@ -63,7 +63,7 @@ class Player extends Characters {
         }
     }
     healingPotion() {
-        const heal = 35
+        const heal = 50
         this.health += heal
         if (this.health >= this.fullHealth) {
             this.health = this.fullHealth
