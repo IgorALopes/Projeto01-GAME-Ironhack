@@ -2,7 +2,7 @@
 
 [PLAY 🌹](https://igoralopes.github.io/Projeto01-GAME-Ironhack/)
 
-[Slides Apresentation](https://docs.google.com/presentation/d/1oENtEqeZMUiKpOOIpdCtNAK-1kv4ILmziORKGszgEv4/edit?usp=sharing)
+[Slides Presentation](https://docs.google.com/presentation/d/1oENtEqeZMUiKpOOIpdCtNAK-1kv4ILmziORKGszgEv4/edit?usp=sharing)
 
 #PORTUGUÊS
 
