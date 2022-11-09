@@ -25,3 +25,8 @@ The game developed here is based on turns dynamic, where the player performs an 
 
 Synopsis:
 In a kingdom desolated by evil creatures, the king, in an act of desperation, sends his best and last remaining knight on a quest to discover the source of the overwhelming attacks on his territory.
+
+
+CREDITS:
+
+Cover Illustration - The dark tower - by [Natali Hall](https://www.artstation.com/artwork/18vo32)
